@@ -1,5 +1,5 @@
 # projeto-python
-projeto de python de biblioteca pessoal
+Projeto de Python de Biblioteca Pessoal
 
 Manual do Usuário – Gerenciamento de Biblioteca Pessoal
 
