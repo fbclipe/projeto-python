@@ -1,7 +1,7 @@
 import os
 os.system ('cls')
 
-
+# Função para leitura dos dados no arquivo csv
 def lerBancoDados():
     arquivo_csv = open('bancodedados.csv', 'r')
     leitor = csv.DictReader(arquivo_csv)
@@ -10,7 +10,7 @@ def lerBancoDados():
     return dados
 
 
-
+# Função para escrever dados no arquivo csv
 def escreverBancoDados(livros):
     arquivo_csv = open('bancodedados.csv', 'w', newline='')
     topicos = ['Nome', 'Autor', 'Categoria', 'Dinheiro_Gasto']
@@ -20,7 +20,7 @@ def escreverBancoDados(livros):
     arquivo_csv.close()
 
 
-
+# Função para adição de livros
 def adicionar():
     nome = input("Nome do livro: ")
     autor = input("Autor: ")
@@ -39,7 +39,7 @@ def adicionar():
     print("Livro adicionado!")
 
 
-
+# Função para visualização da biblioteca
 def visualizarBiblioteca():
     livros = lerBancoDados()
 
@@ -50,7 +50,7 @@ def visualizarBiblioteca():
             print(f"{livro['Nome']} - {livro['Autor']} - {livro['Categoria']} - R${livro['Dinheiro_Gasto']}")
 
 
-
+# Função para atualizar dados dos livros dentro da biblioteca
 def atualizar():
     nomeLivro = input("Digite livro que você quer atualizar: ")
 
@@ -91,7 +91,7 @@ def atualizar():
         print(f"Você não possui'{nomeLivro}' na sua biblioteca.")
 
 
-
+# Função para excluir livros da biblioteca
 def excluir():
     nomeLivro = input("Digite o livro que deseja excluir: ")
 
@@ -109,7 +109,7 @@ def excluir():
         print(f"O livro '{nomeLivro}' não foi encontrado na biblioteca.")
 
 
-
+# Função para visualizar livros de acordo com a categoria escolhida
 def visualizarCategoria():
     categoria = input("Digite a categoria para visualizar os livros: ")
 
@@ -123,7 +123,7 @@ def visualizarCategoria():
             print(f"{livro['Nome']} - {livro['Autor']} - R${livro['Dinheiro_Gasto']}")
 
 
-
+# Função para separar os livros de acordo com as categorias
 def extratoCategoria():
     livros = lerBancoDados()
     
@@ -147,7 +147,7 @@ def extratoCategoria():
         print()
 
 
-
+# Função para mostrar os gastos totais com a biblioteca
 def gastosTotais():
     livros = lerBancoDados()
     totalGastos = sum(float(livro['Dinheiro_Gasto']) for livro in livros)
@@ -155,7 +155,7 @@ def gastosTotais():
     print(f"Total de dinheiro gasto na coleção: R${totalGastos:.2f}")
 
 
-
+# Função para mostrar a média de gastos
 def mediaGastos():
     livros = lerBancoDados()
     try:
