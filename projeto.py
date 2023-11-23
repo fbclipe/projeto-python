@@ -44,7 +44,7 @@ def visualizarBiblioteca():
     livros = lerBancoDados()
 
     if not livros:
-        print("Não há livros na biblioteca.")
+        print("Não há livros na biblioteca!")
     else:
         for livro in livros:
             print(f"{livro['Nome']} - {livro['Autor']} - {livro['Categoria']} - R${livro['Dinheiro_Gasto']}")
