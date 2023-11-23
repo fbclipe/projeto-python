@@ -152,7 +152,7 @@ def gastosTotais():
     livros = lerBancoDados()
     totalGastos = sum(float(livro['Dinheiro_Gasto']) for livro in livros)
 
-    print(f"Total de dinheiro gasto na coleção: R${totalGastos:.2f}")
+    print(f"Valor total gasto na coleção: R${totalGastos:.2f}")
 
 
 # Função para mostrar a média de gastos
