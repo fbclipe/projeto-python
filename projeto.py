@@ -82,7 +82,7 @@ def atualizar():
                 try:
                     livro['Dinheiro_Gasto'] = float(input("Digite o novo valor gasto: "))
                 except (ValueError):
-                    livro['Dinheiro_Gasto'] = float(input("Valor inválido. Tente novamente: "))
+                    livro['Dinheiro_Gasto'] = float(input("Valor invalido. Tente novamente: "))
 
             escreverBancoDados(livros)
             print("Livro atualizado!")
