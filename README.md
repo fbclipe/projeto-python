@@ -8,7 +8,6 @@ Bem-vindo ao Gerenciamento de Biblioteca Pessoal! Este software foi desenvolvido
 
 
 
-
 2.	Requisitos do Sistema
 Antes de começar, certifique-se de que seu sistema atenda aos seguintes requisitos: 
 •	Python instalado (versão 3.x recomendada) 
@@ -16,11 +15,10 @@ Antes de começar, certifique-se de que seu sistema atenda aos seguintes requisi
 
 
 
-
 3.	Instalação e Execução
-•	Faça o download dos arquivos do projeto. 
-•	Abra o terminal na pasta do projeto. 
-•	Execute o programa e abra o arquivo projetobiblioteca.py.
+•	Faça o download dos arquivos do projeto;
+•	Abra o terminal na pasta do projeto;
+•	Execute o programa e abra o arquivo projetobiblioteca.py
 
 
 
@@ -55,7 +53,7 @@ Antes de começar, certifique-se de que seu sistema atenda aos seguintes requisi
 
 
 7.	Contato e Suporte
-Caso encontre algum problema ou tenha dúvidas, entre em contato conosco através do email:
+
 •	bchg@cesar.school
 •	fbc@cesar.school
 •	lfpb@cesar.school
