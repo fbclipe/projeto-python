@@ -52,7 +52,7 @@ def visualizarBiblioteca():
 
 # Função para atualizar dados dos livros dentro da biblioteca
 def atualizar():
-    nomeLivro = input("Digite livro que você quer atualizar: ")
+    nomeLivro = input("Digite livro que você deseja atualizar: ")
 
     livros = lerBancoDados()
     livroEncontrado = False
