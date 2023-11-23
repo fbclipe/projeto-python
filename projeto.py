@@ -177,7 +177,7 @@ while True:
     print("5. Visualizar Categorias")
     print("6. Extrato por Categoria")
     print("7. Gastos Totais")
-    print("8. Média de Gastos")
+    print("8. Media de Gastos")
     print("0. Sair")
 
     opcao = input("Escolha uma função: ")
