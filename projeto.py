@@ -1,22 +1,26 @@
-import csv
 import os
 os.system ('cls')
 
-# Função p/ leitura do banco de dados (arquivo .csv)
+
 def lerBancoDados():
-    with open('bancodedados.csv', 'r') as arquivo_csv: 
-        leitor = csv.DictReader(arquivo_csv)
-        return list(leitor)
+    arquivo_csv = open('bancodedados.csv', 'r')
+    leitor = csv.DictReader(arquivo_csv)
+    dados = list(leitor)
+    arquivo_csv.close()
+    return dados
 
-# Função p/ atribuir itens ao banco de dados (arquivo .csv)
+
+
 def escreverBancoDados(livros):
-    with open('bancodedados.csv', 'w', newline='') as arquivo_csv:
-        topicos = ['Nome', 'Autor', 'Categoria', 'Dinheiro_Gasto']
-        escritor = csv.DictWriter(arquivo_csv, fieldnames=topicos)
-        escritor.writeheader()
-        escritor.writerows(livros)
+    arquivo_csv = open('bancodedados.csv', 'w', newline='')
+    topicos = ['Nome', 'Autor', 'Categoria', 'Dinheiro_Gasto']
+    escritor = csv.DictWriter(arquivo_csv, fieldnames=topicos)
+    escritor.writeheader()
+    escritor.writerows(livros)
+    arquivo_csv.close()
 
-# Função p/ adicionar itens na biblioteca
+
+
 def adicionar():
     nome = input("Nome do livro: ")
     autor = input("Autor: ")
@@ -34,7 +38,8 @@ def adicionar():
 
     print("Livro adicionado!")
 
-# Função p/ visualizar os itens contidos na biblioteca (banco de dados/ arquivo .csv)
+
+
 def visualizarBiblioteca():
     livros = lerBancoDados()
 
@@ -44,7 +49,8 @@ def visualizarBiblioteca():
         for livro in livros:
             print(f"{livro['Nome']} - {livro['Autor']} - {livro['Categoria']} - R${livro['Dinheiro_Gasto']}")
 
-# Função p/ alterar valores dos itens contidos na biblioteca (banco de dados/ arquivo .csv)
+
+
 def atualizar():
     nomeLivro = input("Digite livro que você quer atualizar: ")
 
@@ -84,7 +90,8 @@ def atualizar():
     if not livroEncontrado:
         print(f"Você não possui'{nomeLivro}' na sua biblioteca.")
 
-# Função para excluir itens da biblioteca
+
+
 def excluir():
     nomeLivro = input("Digite o livro que deseja excluir: ")
 
@@ -101,7 +108,8 @@ def excluir():
     if not livroEncontrado:
         print(f"O livro '{nomeLivro}' não foi encontrado na biblioteca.")
 
-# Funçaõ para visualizar os itens separadamente pelas categorias dos livros na biblioteca
+
+
 def visualizarCategoria():
     categoria = input("Digite a categoria para visualizar os livros: ")
 
@@ -114,40 +122,50 @@ def visualizarCategoria():
         for livro in livrosCategoria:
             print(f"{livro['Nome']} - {livro['Autor']} - R${livro['Dinheiro_Gasto']}")
 
-# Função que permite ver todos os itens pertencentes a cada categoria e as características de cada um
+
+
 def extratoCategoria():
     livros = lerBancoDados()
     
-    categorias = set(livro['Categoria'] for livro in livros)
-
+    categorias = []
+    
+    for livro in livros:
+        categoria = livro['Categoria']
+        if categoria not in categorias:
+            categorias.append(categoria)
+        
     for categoria in categorias:
-        
+          
         livrosCategoria = [livro for livro in livros if livro['Categoria'] == categoria]
-        
         totalGastosCategoria = sum(float(livro['Dinheiro_Gasto']) for livro in livrosCategoria)
 
         print(f"=== Categoria: {categoria} ===")
         for livro in livrosCategoria:
             print(f"{livro['Nome']} - R${livro['Dinheiro_Gasto']}")
-        
+            
         print(f"Total gasto na categoria {categoria}: R${totalGastosCategoria:.2f}")
         print()
 
-# Função que mostra quanto foi gasto na aquisição de cada item contido na biblioteca pessoal
+
+
 def gastosTotais():
     livros = lerBancoDados()
     totalGastos = sum(float(livro['Dinheiro_Gasto']) for livro in livros)
 
     print(f"Total de dinheiro gasto na coleção: R${totalGastos:.2f}")
 
-# Função que mostra a média dos gastos ao comparar o preço total pago na aquisição dos itens com a quantidade de itens obtidos
+
+
 def mediaGastos():
     livros = lerBancoDados()
-    mediaGastos = sum(float(livro['Dinheiro_Gasto']) for livro in livros)/len(livros)
-    print(f"A média de gastos é de R${mediaGastos}")
+    try:
+        mediaGastos = sum(float(livro['Dinheiro_Gasto']) for livro in livros)/len(livros)
+        print(f"A média de gastos é de R${mediaGastos}")
+    except ZeroDivisionError:
+        print("Não é possível calcular a média de gastos pois não há livros na biblioteca")
 
 
-# Menu de opções de interação com a biblioteca
+
 while True:
     os.system("cls")
 
@@ -162,28 +180,26 @@ while True:
     print("8. Média de Gastos")
     print("0. Sair")
 
-    escolha = input("Escolha uma função: ")
+    opcao = input("Escolha uma função: ")
 
-# O código abaixo representa as consequências e ações que o programa vai tomar de acordo com o valor que for escolhido (1, 2, 3, 4, 5, 6, 7, 8, 0)
-    if escolha == '1':
+    if opcao == '1':
         adicionar()
-    elif escolha == '2':
+    elif opcao == '2':
         visualizarBiblioteca()
-    elif escolha == '3':
+    elif opcao == '3':
         atualizar()
-    elif escolha == '4':
+    elif opcao == '4':
         excluir()
-    elif escolha == '5':
+    elif opcao == '5':
         visualizarCategoria()
-    elif escolha == '6':
+    elif opcao == '6':
         extratoCategoria()
-    elif escolha == '7':
+    elif opcao == '7':
         gastosTotais()
-    elif escolha == '8':
+    elif opcao == '8':
         mediaGastos()
-    elif escolha == '0':
+    elif opcao == '0':
         break
     else:
         print("Valor incorreto, Tente novamente.")
-    
-    input("Pressione Enter para continuar...")
+    input("Pressione [Enter] para continuar...")
